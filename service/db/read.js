@@ -1,18 +1,13 @@
 var express = require('express');
 const router = express.Router();
 
-var blog = require("../../service/db/model/Blog");
+var model = require("../../service/db/model/Blog");
+var Blog = model.Blog;
 
-router.post('/', (req, res, next) => {
-    var documents = new blog();
-    console.log(req.body);
-    documents.find({}, function(err, docs) {
-        for (var i=0, size=docs.length; i<size; ++i) {
-            docs[i].doc
-        }
+router.post('/', (req, res) => {
+    Blog.find({}, function(err, docs) {
+        res.render('index', {docs:docs});
     });
-    res.render('body/read.ejs');
-    next()
 });
 
 module.exports = router;

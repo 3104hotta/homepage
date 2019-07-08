@@ -1,7 +1,8 @@
+
+<p>Do you really want to save the following data?</p>
+
 <form method="POST" action="/save">
-    <input type="hidden" name="inputData" value=<%- data %>>
-    <table border="1">
-        <tr><td name="inputData"><%- data %></td></tr>
-    </table><br/>
+    <input type="hidden" name="savedData" value=<%- inputData %>>
+        <%- inputData %> <br><br>
     <button type="submit"　id="save">save</button>
 </form>

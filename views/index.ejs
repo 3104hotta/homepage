@@ -21,6 +21,8 @@
 <!--    <script type="text/javascript" src="../assets/js/index.js"></script>-->
 
 
+
+
 </head>
 
 <body>
@@ -76,13 +78,27 @@
 
         <div class="container-fluid">
             <h1 class="mt-4">Blog Page</h1>
-            <% var data;%>
-            <% if (data != undefined) { %>
-                <% include body/confirm %>
+
+            <% var savedData %>
+            <% if (savedData != undefined) { %>
+                <% include body/complete %>
             <% } else { %>
-                <% include body/input %>
+                <% var inputData %>
+                <% if (inputData != undefined) { %>
+                    <% include body/confirm %>
+                <% } else { %>
+                    <% include body/input %>
+                    <br>
+                    <form method="POST" action="view">
+                        <input type="submit" value="view">
+                    </form>
+                    <br>
+                <% } %>
+                <% var docs;%>
+                <% if (docs != undefined) { %>
+                    <% include body/read %>
+                <% } %>
             <% } %>
-            <% include body/read %>
         </div>
     </div>
     <!-- /#page-content-wrapper -->

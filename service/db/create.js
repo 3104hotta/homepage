@@ -11,7 +11,7 @@ var Blog = model.Blog;
 
 router.post('/', (req, res, next) => {
     var documents = new Blog({
-        content: req.body.inputData
+        content: req.body.savedData
     });
 
     documents.save(function (err) {
@@ -19,7 +19,7 @@ router.post('/', (req, res, next) => {
     });
 
     console.log(req.body);
-    res.render('body/complete.ejs',req.body);
+    res.render('index',req.body);
     next()
 });
 

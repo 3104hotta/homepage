@@ -15,8 +15,8 @@ app.get('/', function(req, res) {
 });
 
 app.post('/post', function(req, res) {
-    const data = req.body.inputData;
-    res.render('index',{data:data});
+    const inputData = req.body.inputData;
+    res.render('index',{inputData:inputData});
 })
 
 app.use('/save', require('./service/db/create'))
