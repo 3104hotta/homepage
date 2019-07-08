@@ -23,6 +23,8 @@ app.use('/save', require('./service/db/create'))
 
 app.use('/view', require('./service/db/read'))
 
+app.use('/delete', require('./service/db/delete'))
+
 app.listen(3000, function() {
     console.log('app listening on port 3000');
 });

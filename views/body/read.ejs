@@ -2,7 +2,22 @@
 <script>
     $(function(){
         $('.delete').on('click', function() {
-            alert($(this).siblings('#id').text());
+            // 対象ボタンの親のForm取得
+            var form = $(this).parents('form');
+
+            // 追加したいデータをdata属性から取得
+            var id = $(this).siblings('#id').text();
+
+            // 取得したデータをformに対してhiddenタグで追加する
+            $('input').attr({
+                'type': 'hidden',
+                'name': 'id',
+                'value': id
+            }).appendTo(form);
+
+            // formを送信する
+            form.submit();
+
         });
     });
 </script>
@@ -15,13 +30,16 @@
             <td>content</td>
             <td>button</td>
         </tr>
-        <% for (var i in docs) { %>
-            <tr>
-                <td><%- i %></td>
-                <td id="id"><%- docs[i]._id %></td>
-                <td><%- docs[i].content %></td>
-                <td class="delete"><button type="submit">delete</button></td>
-            </tr>
-        <% } %>
+        <form method="POST" action="/delete">
+            <input type="hidden" name="" value="">
+            <% for (var i in docs) { %>
+                <tr>
+                    <td><%- i %></td>
+                    <td id="id"><%- docs[i]._id %></td>
+                    <td><%- docs[i].content %></td>
+                    <td class="delete"><button type="submit">delete</button></td>
+                </tr>
+            <% } %>
+        </form>
 </table>
 
