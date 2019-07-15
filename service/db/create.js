@@ -11,15 +11,21 @@ var Blog = model.Blog;
 
 router.post('/', (req, res, next) => {
     var documents = new Blog({
-        content: req.body.savedData
+        content: req.body.data
     });
 
     documents.save(function (err) {
         if (err) throw err;
     });
 
-    console.log(req.body);
-    res.render('index',req.body);
+    console.log(req.body.data);
+
+    const json = {
+        data: req.body.data,
+        status: 'saved'
+    }
+
+    res.render('index',json);
     next()
 });
 

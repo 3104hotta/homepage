@@ -1,0 +1,17 @@
+
+<% if ((status == undefined) || (status == 'view') || (status == 'delete')) { %>
+    <% include input %>
+    <% include partial/view_button %>
+<% } else if (status == 'inputted') { %>
+    <% include confirm %>
+<% } else if (status == 'saved') { %>
+    <% include complete %>
+<% } %>
+
+<% if (status == 'edit') { %>
+    <% include input %>
+<% } %>
+
+<% if ((status == 'view') || (status == 'delete')) { %>
+    <% include read %>
+<% } %>

@@ -6,7 +6,11 @@ var Blog = model.Blog;
 
 router.post('/', (req, res) => {
     Blog.find({}, function(err, docs) {
-        res.render('index', {docs:docs});
+        const json = {
+            docs: docs,
+            status: 'view'
+        };
+        res.render('index', json);
     });
 });
 

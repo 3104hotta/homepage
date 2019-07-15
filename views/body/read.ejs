@@ -5,10 +5,12 @@
             // 対象ボタンの親のForm取得
             var form = $(this).parents('form');
 
-            // 追加したいデータをdata属性から取得
-            var id = $(this).siblings('#id').text();
+            form.attr('action', '/delete');
 
-            // 取得したデータをformに対してhiddenタグで追加する
+            // 削除したいデータのidをid列から取得
+            var id = $(this).siblings('.id').text();
+
+            // 取得したidをformに対してhiddenタグで追加する
             $('input').attr({
                 'type': 'hidden',
                 'name': 'id',
@@ -20,26 +22,49 @@
 
         });
     });
+
+    $(function(){
+        $('.update').on('click', function() {
+
+            // 対象ボタンの親のForm取得
+            var form = $(this).parents('form');
+
+            form.attr('action', '/update');
+
+            // 編集したいデータのidをid列から取得
+            var selectedContent = $(this).siblings('.content').text();
+
+            // 取得したidをformに対してhiddenタグで追加する
+            $('input').attr({
+                'type': 'hidden',
+                'name': 'selectedContent',
+                'value': selectedContent
+            }).appendTo('#form');
+
+            // formを送信する
+            form.submit();
+        });
+    });
+
 </script>
 
-
-<table border="1">
-        <tr>
-            <td>#</td>
-            <td>_id</td>
-            <td>content</td>
-            <td>button</td>
-        </tr>
-        <form method="POST" action="/delete">
-            <input type="hidden" name="" value="">
-            <% for (var i in docs) { %>
-                <tr>
-                    <td><%- i %></td>
-                    <td id="id"><%- docs[i]._id %></td>
-                    <td><%- docs[i].content %></td>
-                    <td class="delete"><button type="submit">delete</button></td>
-                </tr>
-            <% } %>
-        </form>
-</table>
+<form id='form' method="post">
+    <table border="1">
+            <tr>
+                <td>#</td>
+                <td>id</td>
+                <td>content</td>
+                <td colspan="2">button</td>
+            </tr>
+                <% for (var i in docs) { %>
+                    <tr>
+                        <td><%- i %></td>
+                        <td class="id"><%- docs[i]._id %></td>
+                        <td class="content"><%- docs[i].content %></td>
+                        <td class="update"><button>update</button></td>
+                        <td class="delete"><button>delete</button></td>
+                    </tr>
+                <% } %>
+    </table>
+</form>
 
