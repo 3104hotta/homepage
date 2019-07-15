@@ -2,13 +2,13 @@
 <% if ((status == undefined) || (status == 'view') || (status == 'delete')) { %>
     <% include input %>
     <% include partial/view_button %>
-<% } else if (status == 'inputted') { %>
+<% } else if ((status == 'inputted') || (status == 'edit') || (status == 'update')){ %>
     <% include confirm %>
 <% } else if (status == 'saved') { %>
     <% include complete %>
 <% } %>
 
-<% if (status == 'edit') { %>
+<% if ((status == 'edit') || (status == 'update')) { %>
     <% include input %>
 <% } %>
 

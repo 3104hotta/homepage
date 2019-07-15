@@ -1,5 +1,16 @@
+
+<% if ((status == 'inputeed') || (status == 'view') || (status == undefined)) { %>
 <p>Please input your article.</p>
 <form method="post" action="/post">
-    <textarea type="text" name="data" style="width: 800px; height: 200px"><%- data %></textarea><br/>
-    <button type="submit"　id="post">post</button>
+    <textarea type="text" name="data" style="width: 800px; height: 200px"></textarea><br/>
+    <button type="submit">post</button>
+    <input type="hidden" name="status" value="inputted">
 </form>
+<% } else if (status == 'edit') {%>
+<p>Please edit your article.</p>
+<form method="post" action="/post">
+    <textarea type="text" name="data" style="width: 800px; height: 200px"><%- data %></textarea><br/>
+    <button type="submit">post</button>
+    <input type="hidden" name="status" value="update">
+</form>
+<% } %>

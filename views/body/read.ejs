@@ -29,17 +29,17 @@
             // 対象ボタンの親のForm取得
             var form = $(this).parents('form');
 
-            form.attr('action', '/update');
+            form.attr('action', '/post');
 
             // 編集したいデータのidをid列から取得
-            var selectedContent = $(this).siblings('.content').text();
+            var data = $(this).siblings('.content').text();
 
             // 取得したidをformに対してhiddenタグで追加する
-            $('input').attr({
-                'type': 'hidden',
-                'name': 'selectedContent',
-                'value': selectedContent
-            }).appendTo('#form');
+
+            // 注意！ .appendTo()は複数要素の追加はできない。ので、以下では.append()を使用することにした。
+            const input_data = $('#form').append('<input type="hidden" name="data" value="'+ data +'">');
+            input_data.val(data);
+            $('#form').append('<input type="hidden" name="status" value="update">');
 
             // formを送信する
             form.submit();

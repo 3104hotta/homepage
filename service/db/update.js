@@ -5,11 +5,8 @@ const app = express();
 app.use(bodyParser.urlencoded({
     extended: true
 }))
-// app.use(bodyParser.json());
 
-router.post('/', (req, res, next) => {
-    console.log(req.body.selectedContent);
-
+router.post('/', (req, res) => {
     const json = {
         data: req.body.selectedContent,
         status: 'edit'
