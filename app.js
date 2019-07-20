@@ -17,7 +17,6 @@ app.post('/post', function(req, res) {
         data: req.body.data,
         status: req.body.status
     };
-    console.log(JSON.stringify(req.body));
     res.render('index', json);
 });
 

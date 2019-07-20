@@ -1,5 +1,5 @@
 
-<% if ((status == 'inputeed') || (status == 'view') || (status == undefined)) { %>
+<% if ((status == 'inputeed') || (status == 'view') || (status == 'delete') || (status == undefined)) { %>
 <p>Please input your article.</p>
 <form method="post" action="/post">
     <textarea type="text" name="data" style="width: 800px; height: 200px"></textarea><br/>
@@ -7,10 +7,11 @@
     <input type="hidden" name="status" value="inputted">
 </form>
 <% } else if (status == 'edit') {%>
-<p>Please edit your article.</p>
-<form method="post" action="/post">
+<p>Please edit your article. <%- id %></p>
+<form method="post" action="/update/confirm/">
     <textarea type="text" name="data" style="width: 800px; height: 200px"><%- data %></textarea><br/>
     <button type="submit">post</button>
     <input type="hidden" name="status" value="update">
+    <input type="hidden" name="id" value="<%- id %>">
 </form>
 <% } %>

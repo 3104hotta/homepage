@@ -2,7 +2,7 @@
 <% if ((status == undefined) || (status == 'view') || (status == 'delete')) { %>
     <% include input %>
     <% include partial/view_button %>
-<% } else if ((status == 'inputted') || (status == 'edit') || (status == 'update')){ %>
+<% } else if ((status == 'inputted') || (status == 'edited')){ %>
     <% include confirm %>
 <% } else if (status == 'saved') { %>
     <% include complete %>
