@@ -6,6 +6,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+app.use(express.static(__dirname +'/update'));
 
 router.post('/', (req, res) => {
     const json = {
@@ -19,6 +20,7 @@ router.post('/', (req, res) => {
 
 router.post('/confirm', (req, res) => {
     const json = {
+        id: req.body.id,
         data: req.body.data,
         status: 'edited'
     };
@@ -38,7 +40,6 @@ router.post('/save', (req, res) => {
             if (err) throw err;
         }
     );
-    console.log('/update/save/ :' +  json.data);
     res.render('index', {status: 'saved'});
 });
 
