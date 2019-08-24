@@ -1,4 +1,4 @@
 #!/bin/bash
 
-mongod --dbpath /var/lib/mongodb --logpath /var/log/mongodb.log &
-mongo
+mongod --dbpath /var/lib/mongodb &
+#mongo

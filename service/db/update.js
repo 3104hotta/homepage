@@ -6,8 +6,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use(express.static(__dirname +'/update'));
-
 router.post('/', (req, res) => {
     const json = {
         id: req.body.id,
